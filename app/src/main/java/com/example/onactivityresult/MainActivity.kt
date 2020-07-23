@@ -15,11 +15,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        /**
+         *
+         * UpdatePicture is a custom class with method name : updateProfilePicture() inside it
+         * and in this method we choose picture from gallery with the help of
+         * startActivityForResult and send it to this class (Main Activity)
+         * and in this class with the help of onActivityResult method we
+         * retrieve the image and shown that in imageView
+         */
         imv_choose_picture.setOnClickListener {
-            Intent(Intent.ACTION_GET_CONTENT).also {
-                it.type = "image/*"
-                startActivityForResult(it, REQUEST_CODE_IMAGE_PICK)
-            }
+            val updatePic = UpdatePicture()
+            updatePic.updateProfilePicture(this)
+
         }
     }
 
@@ -33,5 +41,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }
